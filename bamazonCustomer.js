@@ -10,3 +10,10 @@ var connection = mySQL.createConnection({
     password: "password",
     database: "bamazon_db"
 });
+
+connection.connect(function (error) {
+    if (error) throw error;
+    console.log("Connected as ID:", connection.threadId + "\n");
+    optionMenu();
+});
+
