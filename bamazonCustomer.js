@@ -90,3 +90,26 @@ function runProgram() {
                 name: "confirmation",
                 default: true
             }
+        ]).then(function (userResponse) {
+
+            connection.query("SELECT * FROM products WHERE ?", {
+                item_id: userResponse.itemId
+            }, function (error, response) {
+                console.log("\nYou have chosen to buy " + userResponse.units + " " + response[0].product_name + "(s).");
+                if (userResponse.units > response[0].stock_quantity) {
+                    console.log("\n" + (chalk.red("Oh no. We do not have enough in stock! We are sorry.")) + "\n")
+                    optionMenu();
+                } else {
+                    console.log("\nProcessing your order....\n");
+                    var totalCost = userResponse.units * response[0].price;
+                    var updateStock = response[0].stock_quantity - userResponse.units;
+                    var update = "UPDATE products SET stock_quantity = " + updateStock + " WHERE item_id = " + userResponse.itemId;
+                    connection.query(update, function (error, response) {
+                        if (error) throw error
+                        console.log("Transaction complete! The total cost of your purchase was: $" + totalCost + ".")
+                        console.log("Please come back again. :)")
+                    })
+                }
+            })
+        });
+}
