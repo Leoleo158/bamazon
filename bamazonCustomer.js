@@ -59,3 +59,34 @@ function inventoryItem() {
         runProgram();
     })
 }
+
+function runProgram() {
+    inquirer
+        .prompt([{
+                type: "input",
+                message: "\n" + "Please enter the ID of the product you would like to buy:",
+                name: "itemId",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
+            },
+            {
+                type: "input",
+                message: "How many would you like to buy?",
+                name: "units",
+                validate: function (value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                    return false;
+                }
+            },
+            {
+                type: "confirm",
+                message: (chalk.green("Is this correct?")),
+                name: "confirmation",
+                default: true
+            }
