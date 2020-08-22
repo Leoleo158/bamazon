@@ -36,3 +36,26 @@ function optionMenu() {
         }
     })
 }
+
+function inventoryItem() {
+    var query = "SELECT * FROM products";
+    connection.query(query, function (error, response) {
+        if (error) throw error;
+        var divider = "\n------------------------------------------------------------\n";
+        var greeting = "\n" + "Here is the current available inventory:" + "\n"
+        console.log(greeting);
+        var table = new Table({
+            head: ["ID", "Item", "Price", "In Stock"]
+        });
+        for (var i = 0; i < response.length; i++) {
+            table.push([
+                response[i].item_id,
+                response[i].product_name,
+                '$' + response[i].price,
+                response[i].stock_quantity
+            ]);
+        }
+        console.log(table.toString() + "\n");
+        runProgram();
+    })
+}
