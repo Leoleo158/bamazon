@@ -17,3 +17,22 @@ connection.connect(function (error) {
     optionMenu();
 });
 
+function optionMenu() {
+    console.log((chalk.green("Welcome to Bamazon!")))
+    inquirer.prompt({
+        type: "list",
+        message: "What would you like to do?",
+        name: "choice",
+        choices: ["Make a purchase", "Exit"]
+    }).then(function (response) {
+        switch (response.choice) {
+            case "Make a purchase":
+                inventoryItem();
+                break;
+            case "Exit":
+                connection.end();
+                console.log("You have exited the program. Please come again!")
+                break;
+        }
+    })
+}
