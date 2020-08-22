@@ -1,0 +1,37 @@
+{
+    "name": "Bamazon",
+    "version": "1.0.0",
+    "description": "## Overview  Welcome to Bamazon! Bamazon is a command line interface application that can be used to request and place real-time orders through a virtual storefront. Using the power of MySQL, Javascript, and Node.js, Bamazon will take in orders and deplete stock from the store's inventory.",
+    "main": "bamazonCustomer.js",
+    "dependencies": {
+      "chalk": "^2.4.2",
+      "cli-table3": "^0.5.1",
+      "console.table": "^0.10.0",
+      "dotenv": "^8.0.0",
+      "i": "^0.3.6",
+      "inquirer": "^6.5.0",
+      "mysql": "^2.17.1"
+    },
+    "devDependencies": {
+      "eslint": "^6.3.0",
+      "eslint-config-standard": "^14.1.0",
+      "eslint-plugin-import": "^2.18.2",
+      "eslint-plugin-node": "^10.0.0",
+      "eslint-plugin-promise": "^4.2.1",
+      "eslint-plugin-standard": "^4.0.1"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Leoleo158/Bamazon.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/Leoleo158/Bamazon/issues"
+    },
+    "homepage": "https://github.com/Leoleo158/Bamazon#readme"
+  }
